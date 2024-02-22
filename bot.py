@@ -7,14 +7,14 @@ from config import Config
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-class AutoCaption(Client):
+class autocaption(Client):
     
     async def on_message(self, message: Message):
         # Your message handling logic here
         pass
 
 if __name__ == "__main__":
-    app = AutoCaption(
+    app = autocaption(
         "Captioner",
         bot_token=Config.BOT_TOKEN,
         api_id=Config.API_ID,
