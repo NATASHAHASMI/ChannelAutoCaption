@@ -1,4 +1,5 @@
-from pyrogram import Client, filters
+from pyrogram import Client
+from pyrogram import filters
 from pyrogram.types import Message
 import logging
 from config import Config
@@ -8,21 +9,18 @@ logger = logging.getLogger(__name__)
 
 class AutoCaption(Client):
     
-    def __init__(self):
-        super().__init__(
-            bot_token=Config.BOT_TOKEN,
-            api_id=Config.API_ID,
-            api_hash=Config.API_HASH,
-            workers=20,
-            plugins=dict(
-                root="plugins"
-            )
-        )
-
     async def on_message(self, message: Message):
         # Your message handling logic here
         pass
 
 if __name__ == "__main__":
-    AutoCaption().run()
-    
+    app = AutoCaption(
+        "Captioner",
+        bot_token=Config.BOT_TOKEN,
+        api_id=Config.API_ID,
+        api_hash=Config.API_HASH,
+        plugins=dict(
+            root="plugins"
+        )
+    )
+    app.run()
